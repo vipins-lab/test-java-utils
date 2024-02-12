@@ -19,6 +19,12 @@
         <start-class>com.test.util.java.App</start-class>
     </properties>
 
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <url>https://maven.pkg.github.com/vipins-lab/test-java-utils</url>          
+        </repository>
+    </distributionManagement>
 
     <dependencies>
         <dependency>
