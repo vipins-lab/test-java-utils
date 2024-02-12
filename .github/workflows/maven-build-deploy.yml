@@ -36,8 +36,9 @@ jobs:
         steps:
             - name: Publish to GitHub Maven Repository
               run: |
-                echo "${pwd}"
-                echo "${whoami}"
+                PWD=$(pwd)
+                echo "${PWD}"
+                whoami
                 mvn deploy -DskipTests --settings ../settings.xml
               env:
                 MAVEN_USERNAME: ${{ secrets.MAVEN_USERNAME }}
