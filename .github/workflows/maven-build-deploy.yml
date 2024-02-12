@@ -25,10 +25,10 @@ jobs:
 
       - name: Publish to GitHub Maven Repository
         run: |
-          pwd
-          whoami
-          
+          echo "${pwd}"
+          echo "${whoami}"
           mvn deploy -DskipTests --settings ../settings.xml
         env:
           MAVEN_USERNAME: ${{ secrets.MAVEN_USERNAME }}
           MAVEN_PASSWORD: ${{ secrets.MAVEN_PASSWORD }}
+        working-directory: ./commons-utils
