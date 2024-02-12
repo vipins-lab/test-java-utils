@@ -21,6 +21,8 @@ jobs:
 
       - name: Build with Maven
         run: mvn clean package
+        working-directory: ./commons-utils
+
 
     #   - name: Publish to GitHub Maven Repository
     #     run: |
