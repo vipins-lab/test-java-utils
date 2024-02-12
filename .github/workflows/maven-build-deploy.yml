@@ -6,7 +6,9 @@ on:
       - main
 
 jobs:
+    
   build:
+    name: Build
     runs-on: ubuntu-latest
     
     steps:
@@ -23,12 +25,23 @@ jobs:
         run: mvn clean package
         working-directory: ./commons-utils
 
-      - name: Publish to GitHub Maven Repository
-        run: |
-          echo "${pwd}"
-          echo "${whoami}"
-          mvn deploy -DskipTests --settings ../settings.xml
-        env:
-          MAVEN_USERNAME: ${{ secrets.MAVEN_USERNAME }}
-          MAVEN_TOKEN: ${{ secrets.MAVEN_PASSWORD }}
-        working-directory: ./commons-utils
+  publish:
+        needs: [build]
+        name: "Publish"
+        runs-on: ubuntu-latest    
+        
+        environment:
+            name: PROD
+        
+        steps:
+            - name: Publish to GitHub Maven Repository
+              run: |
+                echo "${pwd}"
+                echo "${whoami}"
+                mvn deploy -DskipTests --settings ../settings.xml
+              env:
+                MAVEN_USERNAME: ${{ secrets.MAVEN_USERNAME }}
+                MAVEN_TOKEN: ${{ secrets.MAVEN_PASSWORD }}
+              working-directory: ./commons-utils            
+
+
