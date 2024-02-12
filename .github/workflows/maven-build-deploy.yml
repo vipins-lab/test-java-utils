@@ -25,6 +25,9 @@ jobs:
 
       - name: Publish to GitHub Maven Repository
         run: |
+          pwd
+          whoami
+          
           mvn deploy -DskipTests --settings ../settings.xml
         env:
           MAVEN_USERNAME: ${{ secrets.MAVEN_USERNAME }}
