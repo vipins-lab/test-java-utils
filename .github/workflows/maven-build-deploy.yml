@@ -39,7 +39,7 @@ jobs:
                 PWD=$(pwd)
                 echo "${PWD}"
                 whoami
-                mvn deploy -DskipTests --settings ../settings.xml
+                mvn deploy -DskipTests --settings ./settings.xml
               env:
                 MAVEN_USERNAME: ${{ secrets.MAVEN_USERNAME }}
                 MAVEN_TOKEN: ${{ secrets.MAVEN_PASSWORD }}
