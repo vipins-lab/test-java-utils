@@ -34,10 +34,19 @@ jobs:
             name: PROD
         
         steps:
+            - name: Checkout code
+              uses: actions/checkout@v2
+
+            - name: Set up JDK
+              uses: actions/setup-java@v2       
+              with:
+                distribution: 'microsoft'
+                java-version: '17'
+                                
             - name: Publish to GitHub Maven Repository
               run: |
-                PWD=$(pwd)
-                echo "${PWD}"
+                CWD=$(pwd)
+                echo "${CWD}"
                 whoami
                 mvn deploy -DskipTests --settings ./settings.xml
               env:
